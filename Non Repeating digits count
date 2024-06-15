@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class NonRepeatedDigitsCount {
+    public static int countNonRepeatedDigits(int N) {
+        
+        int[] digitCounts = new int[10];
+
+        
+        String numberStr = Integer.toString(N);
+
+        
+        for (int i = 0; i < numberStr.length(); i++) {
+            int digit = Character.getNumericValue(numberStr.charAt(i));
+            
+            digitCounts[digit]++;
+        }
+
+    
+        int nonRepeatedCount = 0;
+
+        
+        for (int count : digitCounts) {
+            if (count == 1) {
+                nonRepeatedCount++;
+            }
+        }
+
+        return nonRepeatedCount;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a positive integer number: ");
+        int number = scanner.nextInt();
+
+        if (number <= 0) {
+            System.out.println("Invalid input. Please enter a positive integer.");
+        } else {
+            System.out.println("Number: " + number);
+            System.out.println("Count of non-repeated digits: " + countNonRepeatedDigits(number));
+        }
+
+        scanner.close();
+    }
+}
